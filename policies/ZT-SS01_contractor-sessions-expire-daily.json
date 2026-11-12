@@ -1,0 +1,48 @@
+{
+  "displayName": "[ZT-SS01] Contractor Sessions Expire Daily",
+  "state": "enabledForReportingButNotEnforced",
+  "conditions": {
+    "users": {
+      "excludeGroups": [
+        "{{BREAK_GLASS_GROUP_ID}}"
+      ],
+      "includeGroups": [
+        "{{CONTRACTORS_GROUP_ID}}"
+      ]
+    },
+    "applications": {
+      "includeApplications": [
+        "Office365"
+      ]
+    },
+    "clientAppTypes": [
+      "browser",
+      "mobileAppsAndDesktopClients"
+    ],
+    "platforms": {
+      "includePlatforms": [
+        "all"
+      ],
+      "excludePlatforms": [
+        "android",
+        "iOS",
+        "windowsPhone"
+      ]
+    }
+  },
+  "grantControls": {
+    "operator": "OR",
+    "authenticationStrength": {
+      "id": "00000000-0000-0000-0000-000000000002"
+    }
+  },
+  "sessionControls": {
+    "signInFrequency": {
+      "isEnabled": true,
+      "frequencyInterval": "timeBased",
+      "value": 1,
+      "type": "days",
+      "authenticationType": "primaryAndSecondaryAuthentication"
+    }
+  }
+}

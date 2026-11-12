@@ -1,0 +1,41 @@
+{
+  "displayName": "[ZT-SS02] Unmanaged Devices: Daily Browser Sessions, No Persistence",
+  "state": "enabledForReportingButNotEnforced",
+  "conditions": {
+    "users": {
+      "excludeGroups": [
+        "{{BREAK_GLASS_GROUP_ID}}"
+      ],
+      "includeUsers": [
+        "All"
+      ]
+    },
+    "applications": {
+      "includeApplications": [
+        "All"
+      ]
+    },
+    "clientAppTypes": [
+      "browser"
+    ],
+    "devices": {
+      "deviceFilter": {
+        "mode": "exclude",
+        "rule": "device.trustType -eq \"ServerAD\" -or device.trustType -eq \"AzureAD\" -or device.deviceOwnership -eq \"Company\""
+      }
+    }
+  },
+  "sessionControls": {
+    "signInFrequency": {
+      "isEnabled": true,
+      "frequencyInterval": "timeBased",
+      "value": 1,
+      "type": "days",
+      "authenticationType": "primaryAndSecondaryAuthentication"
+    },
+    "persistentBrowser": {
+      "isEnabled": true,
+      "mode": "never"
+    }
+  }
+}

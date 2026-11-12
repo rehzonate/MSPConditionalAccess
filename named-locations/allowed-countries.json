@@ -1,0 +1,9 @@
+{
+  "@odata.type": "#microsoft.graph.countryNamedLocation",
+  "displayName": "Allowed Countries",
+  "countriesAndRegions": [
+    "US"
+  ],
+  "includeUnknownCountriesAndRegions": false,
+  "countryLookupMethod": "clientIpAddress"
+}

@@ -1,0 +1,59 @@
+{
+  "displayName": "[ZT-DV03] Windows: No Browser Access from Unmanaged PCs",
+  "state": "enabledForReportingButNotEnforced",
+  "conditions": {
+    "users": {
+      "excludeGroups": [
+        "{{BREAK_GLASS_GROUP_ID}}"
+      ],
+      "includeGroups": [
+        "{{ALL_USERS_GROUP_ID}}"
+      ],
+      "excludeGuestsOrExternalUsers": {
+        "guestOrExternalUserTypes": "internalGuest,b2bCollaborationGuest,b2bCollaborationMember,b2bDirectConnectUser,otherExternalUser,serviceProvider",
+        "externalTenants": {
+          "@odata.type": "#microsoft.graph.conditionalAccessAllExternalTenants",
+          "membershipKind": "all"
+        }
+      }
+    },
+    "applications": {
+      "includeApplications": [
+        "Office365"
+      ],
+      "excludeApplications": [
+        "00000002-0000-0ff1-ce00-000000000000"
+      ]
+    },
+    "clientAppTypes": [
+      "browser"
+    ],
+    "platforms": {
+      "includePlatforms": [
+        "all"
+      ],
+      "excludePlatforms": [
+        "android",
+        "iOS",
+        "linux"
+      ]
+    },
+    "locations": {
+      "includeLocations": [
+        "All"
+      ]
+    },
+    "devices": {
+      "deviceFilter": {
+        "mode": "exclude",
+        "rule": "device.trustType -eq \"ServerAD\" -or device.trustType -eq \"AzureAD\" -or device.deviceOwnership -eq \"Company\""
+      }
+    }
+  },
+  "grantControls": {
+    "operator": "OR",
+    "builtInControls": [
+      "block"
+    ]
+  }
+}

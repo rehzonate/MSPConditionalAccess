@@ -1,0 +1,11 @@
+{
+  "@odata.type": "#microsoft.graph.ipNamedLocation",
+  "displayName": "Office (Trusted)",
+  "isTrusted": true,
+  "ipRanges": [
+    {
+      "@odata.type": "#microsoft.graph.iPv4CidrRange",
+      "cidrAddress": "{{OFFICE_PUBLIC_IP}}/32"
+    }
+  ]
+}

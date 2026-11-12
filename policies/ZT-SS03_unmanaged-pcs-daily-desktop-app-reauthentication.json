@@ -1,0 +1,53 @@
+{
+  "displayName": "[ZT-SS03] Unmanaged PCs: Daily Desktop App Reauthentication",
+  "state": "enabledForReportingButNotEnforced",
+  "conditions": {
+    "users": {
+      "excludeGroups": [
+        "{{BREAK_GLASS_GROUP_ID}}"
+      ],
+      "includeGroups": [
+        "{{ALL_USERS_GROUP_ID}}"
+      ]
+    },
+    "applications": {
+      "includeApplications": [
+        "Office365"
+      ]
+    },
+    "clientAppTypes": [
+      "mobileAppsAndDesktopClients"
+    ],
+    "platforms": {
+      "includePlatforms": [
+        "all"
+      ],
+      "excludePlatforms": [
+        "android",
+        "iOS",
+        "windowsPhone"
+      ]
+    },
+    "devices": {
+      "deviceFilter": {
+        "mode": "include",
+        "rule": "device.trustType -ne \"ServerAD\" -and device.trustType -ne \"AzureAD\" -and device.deviceOwnership -ne \"Company\""
+      }
+    }
+  },
+  "grantControls": {
+    "operator": "OR",
+    "builtInControls": [
+      "mfa"
+    ]
+  },
+  "sessionControls": {
+    "signInFrequency": {
+      "isEnabled": true,
+      "frequencyInterval": "timeBased",
+      "value": 1,
+      "type": "days",
+      "authenticationType": "primaryAndSecondaryAuthentication"
+    }
+  }
+}

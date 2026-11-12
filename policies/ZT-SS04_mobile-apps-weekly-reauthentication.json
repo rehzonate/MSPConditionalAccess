@@ -1,0 +1,42 @@
+{
+  "displayName": "[ZT-SS04] Mobile Apps: Weekly Reauthentication",
+  "state": "enabledForReportingButNotEnforced",
+  "conditions": {
+    "users": {
+      "excludeGroups": [
+        "{{BREAK_GLASS_GROUP_ID}}"
+      ],
+      "includeUsers": [
+        "All"
+      ]
+    },
+    "applications": {
+      "includeApplications": [
+        "All"
+      ]
+    },
+    "clientAppTypes": [
+      "mobileAppsAndDesktopClients"
+    ],
+    "platforms": {
+      "includePlatforms": [
+        "android",
+        "iOS",
+        "windowsPhone"
+      ]
+    }
+  },
+  "sessionControls": {
+    "signInFrequency": {
+      "isEnabled": true,
+      "frequencyInterval": "timeBased",
+      "value": 7,
+      "type": "days",
+      "authenticationType": "primaryAndSecondaryAuthentication"
+    },
+    "persistentBrowser": {
+      "isEnabled": true,
+      "mode": "always"
+    }
+  }
+}
